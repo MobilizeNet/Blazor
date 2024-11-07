@@ -36,7 +36,7 @@ namespace SKS_Blazor.Components
         private string[] visualControls = new string[] { "components", "ToolTipMain", "Timer1", "Image1" };
         //Required by the Windows Form Designer
         private System.ComponentModel.IContainer components;
-        //public System.Windows.Forms.ToolTip ToolTipMain;
+        public ToolTip ToolTipMain;
         public Gap.Blazor.Timer Timer1;
         public PictureBox Image1;
         //NOTE: The following procedure is required by the Windows Form Designer
@@ -47,8 +47,8 @@ namespace SKS_Blazor.Components
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
-            //ToolTipMain = new ToolTip(components);
-            //Timer1 = new System.Windows.Forms.Timer(components);
+            ToolTipMain = new ToolTip(components);
+            Timer1 = new Gap.Blazor.Timer(components);
             Image1 = new PictureBox();
             SuspendLayout();
             // 
@@ -63,7 +63,7 @@ namespace SKS_Blazor.Components
             Image1.AllowDrop = true;
             Image1.BorderStyle = BorderStyle.None;
             Image1.Enabled = true;
-            Image1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Image1.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Image1.Image = (Image)resources.GetObject("Market");
             Image1.Location = new System.Drawing.Point(0, 0);
             Image1.Name = "Image1";
@@ -79,7 +79,7 @@ namespace SKS_Blazor.Components
             BackColor = System.Drawing.SystemColors.Control;
             ClientSize = new System.Drawing.Size(943, 613);
             Controls.Add(Image1);
-            Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             //KeyPreview = true;
             Location = new System.Drawing.Point(17, 116);

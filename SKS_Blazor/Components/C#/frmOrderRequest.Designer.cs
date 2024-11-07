@@ -37,15 +37,14 @@ namespace SKS_Blazor.Components
         private string[] visualControls = new string[] { "components", "ToolTipMain", "txtSubTotal", "txtTotal", "txtTotalTax", "txtFreightCharge", "txtSalesTax", "txtEntry", "fgProducts", "sbStatusBar_Panels_Panel1", "sbStatusBar", "dtRequired", "cmdSave", "cmdAddProducts", "cmdClose", "txtContactLastName", "txtContactName", "cmdCustomers", "txtCompanyName", "lvCustomers_ColumnHeader_1_", "lvCustomers_ColumnHeader_2_", "lvCustomers_ColumnHeader_3_", "lvCustomers_ColumnHeader_4_", "lvCustomers_ColumnHeader_5_", "lvCustomers_ColumnHeader_6_", "lvCustomers_ColumnHeader_7_", "lvCustomers", "Label3", "Label4", "Label2", "Frame1", "txtCustomerContact", "txtCustomerCompany", "Label5", "Label1", "Frame2", "dtPromised", "Label13", "Label12", "Label11", "Label10", "Label9", "Label8", "Label7", "Label6", "listViewHelper1", "commandButtonHelper1" };
         //Required by the Windows Form Designer
         private System.ComponentModel.IContainer components;
-        //public ToolTip ToolTipMain;
+        public ToolTip ToolTipMain;
         public TextBox txtSubTotal;
         public TextBox txtTotal;
         public TextBox txtTotalTax;
         public TextBox txtFreightCharge;
         public TextBox txtSalesTax;
         public TextBox txtEntry;
-        //public UpgradeHelpers.DataGridViewFlex fgProducts;
-        public DataGridView fgProducts;
+        public DataGridViewFlex fgProducts;
         public ToolStripStatusLabel sbStatusBar_Panels_Panel1;
         public StatusStrip sbStatusBar;
         public DateTimePicker dtRequired;
@@ -82,8 +81,9 @@ namespace SKS_Blazor.Components
         public Label Label8;
         public Label Label7;
         public Label Label6;
-        public UpgradeHelpers.Gui.Controls.ListViewHelper listViewHelper1;
-        public UpgradeHelpers.Gui.Controls.CommandButtonHelper commandButtonHelper1;
+		// gap-todo: PBI 746467. Add support for component UpgradeHelpers.Gui.Controls.ListViewHelper.
+		//public UpgradeHelpers.Gui.Controls.ListViewHelper listViewHelper1;
+		public UpgradeHelpers.Gui.Controls.CommandButtonHelper commandButtonHelper1;
         //NOTE: The following procedure is required by the Windows Form Designer
         //It can be modified using the Windows Form Designer.
         //Do not modify it using the code editor.
@@ -92,16 +92,16 @@ namespace SKS_Blazor.Components
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrderRequest));
-            //ToolTipMain = new ToolTip(components);
+            ToolTipMain = new ToolTip(components);
             txtSubTotal = new TextBox();
             txtTotal = new TextBox();
             txtTotalTax = new TextBox();
             txtFreightCharge = new TextBox();
             txtSalesTax = new TextBox();
             txtEntry = new TextBox();
-            //fgProducts = new UpgradeHelpers.DataGridViewFlex(components);
-            fgProducts = new DataGridView();
-            sbStatusBar = new StatusStrip();
+			// gap-todo: Bug 749104. DataGridView constructor does not take the container as an argument as the DataGridViewFlex.
+			fgProducts = new DataGridViewFlex(); //new DataGridView(components);
+			sbStatusBar = new StatusStrip();
             sbStatusBar_Panels_Panel1 = new ToolStripStatusLabel();
             dtRequired = new DateTimePicker();
             cmdSave = new Button();
@@ -142,19 +142,20 @@ namespace SKS_Blazor.Components
             lvCustomers.SuspendLayout();
             Frame2.SuspendLayout();
             SuspendLayout();
-            listViewHelper1 = new UpgradeHelpers.Gui.Controls.ListViewHelper(components);
-            //((System.ComponentModel.ISupportInitialize)listViewHelper1).BeginInit();
-            commandButtonHelper1 = new UpgradeHelpers.Gui.Controls.CommandButtonHelper(components);
-            //((System.ComponentModel.ISupportInitialize)fgProducts).BeginInit();
-            // 
-            // txtSubTotal
-            // 
-            txtSubTotal.AcceptsReturn = true;
+			// gap-todo: PBI 746467. Add support for component UpgradeHelpers.Gui.Controls.ListViewHelper.
+			//listViewHelper1 = new UpgradeHelpers.Gui.Controls.ListViewHelper(components);
+			commandButtonHelper1 = new UpgradeHelpers.Gui.Controls.CommandButtonHelper(components);
+			// gap-todo: PBI 749102. DataGridView implement ISupportInitialize interface and add equivalent support for DataGridViewFlex methods.
+			//((System.ComponentModel.ISupportInitialize)fgProducts).BeginInit();
+			// 
+			// txtSubTotal
+			// 
+			txtSubTotal.AcceptsReturn = true;
             txtSubTotal.AllowDrop = true;
             txtSubTotal.BackColor = System.Drawing.SystemColors.Menu;
             txtSubTotal.BorderStyle = BorderStyle.Fixed3D;
             //txtSubTotal.Cursor = Cursors.IBeam;
-            txtSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtSubTotal.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtSubTotal.ForeColor = System.Drawing.SystemColors.WindowText;
             txtSubTotal.Location = new System.Drawing.Point(352, 616);
             txtSubTotal.MaxLength = 0;
@@ -173,7 +174,7 @@ namespace SKS_Blazor.Components
             txtTotal.BackColor = System.Drawing.SystemColors.Menu;
             txtTotal.BorderStyle = BorderStyle.Fixed3D;
             // txtTotal.Cursor = Cursors.IBeam;
-            txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtTotal.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtTotal.ForeColor = System.Drawing.SystemColors.WindowText;
             txtTotal.Location = new System.Drawing.Point(96, 616);
             txtTotal.MaxLength = 0;
@@ -192,7 +193,7 @@ namespace SKS_Blazor.Components
             txtTotalTax.BackColor = System.Drawing.SystemColors.Menu;
             txtTotalTax.BorderStyle = BorderStyle.Fixed3D;
             //txtTotalTax.Cursor = Cursors.IBeam;
-            txtTotalTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtTotalTax.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtTotalTax.ForeColor = System.Drawing.SystemColors.WindowText;
             txtTotalTax.Location = new System.Drawing.Point(352, 592);
             txtTotalTax.MaxLength = 0;
@@ -211,7 +212,7 @@ namespace SKS_Blazor.Components
             txtFreightCharge.BackColor = System.Drawing.SystemColors.Window;
             txtFreightCharge.BorderStyle = BorderStyle.Fixed3D;
             //txtFreightCharge.Cursor = Cursors.IBeam;
-            txtFreightCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtFreightCharge.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtFreightCharge.ForeColor = System.Drawing.SystemColors.WindowText;
             txtFreightCharge.Location = new System.Drawing.Point(96, 592);
             txtFreightCharge.MaxLength = 0;
@@ -230,7 +231,7 @@ namespace SKS_Blazor.Components
             txtSalesTax.BackColor = System.Drawing.SystemColors.Window;
             txtSalesTax.BorderStyle = BorderStyle.Fixed3D;
             //txtSalesTax.Cursor = Cursors.IBeam;
-            txtSalesTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtSalesTax.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtSalesTax.ForeColor = System.Drawing.SystemColors.WindowText;
             txtSalesTax.Location = new System.Drawing.Point(96, 568);
             txtSalesTax.MaxLength = 0;
@@ -250,7 +251,7 @@ namespace SKS_Blazor.Components
             txtEntry.BorderStyle = BorderStyle.Fixed3D;
             //txtEntry.Cursor = Cursors.IBeam;
             txtEntry.Enabled = false;
-            txtEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtEntry.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtEntry.ForeColor = System.Drawing.SystemColors.WindowText;
             txtEntry.Location = new System.Drawing.Point(96, 544);
             txtEntry.MaxLength = 0;
@@ -265,22 +266,26 @@ namespace SKS_Blazor.Components
             fgProducts.AllowDrop = true;
             fgProducts.AllowUserToAddRows = false;
             fgProducts.AllowUserToDeleteRows = false;
-            //fgProducts.AllowUserToResizeColumns = false;
-            //fgProducts.AllowUserToResizeRows = false;
-            fgProducts.BorderStyle = BorderStyle.None;
+			// gap-todo: PBI 749072. DataGridView add support for AllowUserToResizeColumns property.
+			//fgProducts.AllowUserToResizeColumns = false;
+			// gap-todo: PBI 749073. DataGridView add support for AllowUserToResizeRows property.
+			//fgProducts.AllowUserToResizeRows = false;
+			fgProducts.BorderStyle = BorderStyle.None;
             fgProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            //fgProducts.ColumnsCount = 0;
-            //fgProducts.FixedColumns = 0;
-            //fgProducts.FixedRows = 0;
-            fgProducts.Location = new System.Drawing.Point(8, 360);
+			fgProducts.ColumnsCount = 0;
+			fgProducts.FixedColumns = 0;
+			fgProducts.FixedRows = 0;
+			fgProducts.Location = new System.Drawing.Point(8, 360);
             fgProducts.Name = "fgProducts";
             fgProducts.ReadOnly = true;
-            //fgProducts.RowsCount = 2;
-            fgProducts.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            // fgProducts.ShowCellToolTips = false;
-            fgProducts.Size = new System.Drawing.Size(505, 177);
-            //fgProducts.StandardTab = true;
-            fgProducts.TabIndex = 6;
+			fgProducts.RowsCount = 2;
+			fgProducts.SelectionMode = DataGridViewSelectionMode.CellSelect;
+			// gap-todo: PBI 749071. DataGridView add support for ShowCellToolTips property.
+			//fgProducts.ShowCellToolTips = false;
+			fgProducts.Size = new System.Drawing.Size(505, 177);
+			// gap-todo: PBI 749068. DataGridView add support for StandardTab property.
+			//fgProducts.StandardTab = true;
+			fgProducts.TabIndex = 6;
             fgProducts.CellLeave += new DataGridViewCellEventHandler(fgProducts_CellLeave);
             fgProducts.Click += new System.EventHandler(fgProducts_Click);
             fgProducts.KeyPress += new KeyPressEventHandler(fgProducts_KeyPress);
@@ -290,7 +295,7 @@ namespace SKS_Blazor.Components
             sbStatusBar.AllowDrop = true;
             sbStatusBar.BackColor = System.Drawing.SystemColors.Control;
             sbStatusBar.Dock = DockStyle.Bottom;
-            sbStatusBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            sbStatusBar.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             sbStatusBar.Location = new System.Drawing.Point(0, 678);
             sbStatusBar.Name = "sbStatusBar";
             sbStatusBar.ShowItemToolTips = true;
@@ -301,7 +306,7 @@ namespace SKS_Blazor.Components
             // sbStatusBar_Panels_Panel1
             // 
             sbStatusBar_Panels_Panel1.BorderSides = (ToolStripStatusLabelBorderSides)(ToolStripStatusLabelBorderSides.Left | ToolStripStatusLabelBorderSides.Top | ToolStripStatusLabelBorderSides.Right | ToolStripStatusLabelBorderSides.Bottom);
-            //sbStatusBar_Panels_Panel1.BorderStyle = Border3DStyle.SunkenOuter;
+            sbStatusBar_Panels_Panel1.BorderStyle = Border3DStyle.SunkenOuter;
             sbStatusBar_Panels_Panel1.DoubleClickEnabled = true;
             sbStatusBar_Panels_Panel1.Margin = new Padding(0);
             sbStatusBar_Panels_Panel1.Size = new System.Drawing.Size(523, 25);
@@ -313,7 +318,7 @@ namespace SKS_Blazor.Components
             // 
             dtRequired.AllowDrop = true;
             dtRequired.Checked = false;
-            dtRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dtRequired.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             dtRequired.Format = DateTimePickerFormat.Short;
             dtRequired.Location = new System.Drawing.Point(120, 320);
             dtRequired.Name = "dtRequired";
@@ -325,14 +330,14 @@ namespace SKS_Blazor.Components
             // 
             cmdSave.AllowDrop = true;
             cmdSave.BackColor = System.Drawing.SystemColors.Control;
-            cmdSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cmdSave.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             cmdSave.ForeColor = System.Drawing.SystemColors.ControlText;
             cmdSave.Location = new System.Drawing.Point(320, 648);
             cmdSave.Name = "cmdSave";
             cmdSave.RightToLeft = RightToLeft.No;
             cmdSave.Size = new System.Drawing.Size(89, 25);
             cmdSave.TabIndex = 9;
-            cmdSave.Text = "&Save";
+            cmdSave.Text = "Save"; //gap-todo: ealeman. PBI 745736. Mnemonics feature is pending.
             cmdSave.TextImageRelation = TextImageRelation.ImageAboveText;
             cmdSave.UseVisualStyleBackColor = false;
             cmdSave.Click += new System.EventHandler(cmdSave_Click);
@@ -341,7 +346,7 @@ namespace SKS_Blazor.Components
             // 
             cmdAddProducts.AllowDrop = true;
             cmdAddProducts.BackColor = System.Drawing.SystemColors.Control;
-            cmdAddProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cmdAddProducts.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             cmdAddProducts.ForeColor = System.Drawing.SystemColors.ControlText;
             cmdAddProducts.Location = new System.Drawing.Point(488, 336);
             cmdAddProducts.Name = "cmdAddProducts";
@@ -358,14 +363,14 @@ namespace SKS_Blazor.Components
             // 
             cmdClose.AllowDrop = true;
             cmdClose.BackColor = System.Drawing.SystemColors.Control;
-            cmdClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cmdClose.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             cmdClose.ForeColor = System.Drawing.SystemColors.ControlText;
             cmdClose.Location = new System.Drawing.Point(416, 648);
             cmdClose.Name = "cmdClose";
             cmdClose.RightToLeft = RightToLeft.No;
             cmdClose.Size = new System.Drawing.Size(89, 25);
             cmdClose.TabIndex = 10;
-            cmdClose.Text = "&Close";
+            cmdClose.Text = "Close"; //gap-todo: ealeman. PBI 745736. Mnemonics feature is pending.
             cmdClose.TextImageRelation = TextImageRelation.ImageAboveText;
             cmdClose.UseVisualStyleBackColor = false;
             cmdClose.Click += new System.EventHandler(cmdClose_Click);
@@ -384,7 +389,7 @@ namespace SKS_Blazor.Components
             Frame1.Controls.Add(Label2);
             //Frame1.Cursor = UpgradeHelpers.Helpers.CursorHelper.CursorDefault;
             Frame1.Enabled = true;
-            Frame1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Frame1.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Frame1.ForeColor = System.Drawing.SystemColors.ControlText;
             Frame1.Location = new System.Drawing.Point(8, 8);
             Frame1.Name = "Frame1";
@@ -401,7 +406,7 @@ namespace SKS_Blazor.Components
             txtContactLastName.BackColor = System.Drawing.SystemColors.Window;
             txtContactLastName.BorderStyle = BorderStyle.Fixed3D;
             //txtContactLastName.Cursor = Cursors.IBeam;
-            txtContactLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtContactLastName.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtContactLastName.ForeColor = System.Drawing.SystemColors.WindowText;
             txtContactLastName.Location = new System.Drawing.Point(336, 48);
             txtContactLastName.MaxLength = 0;
@@ -418,7 +423,7 @@ namespace SKS_Blazor.Components
             txtContactName.BackColor = System.Drawing.SystemColors.Window;
             txtContactName.BorderStyle = BorderStyle.Fixed3D;
             //txtContactName.Cursor = Cursors.IBeam;
-            txtContactName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtContactName.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtContactName.ForeColor = System.Drawing.SystemColors.WindowText;
             txtContactName.Location = new System.Drawing.Point(88, 48);
             txtContactName.MaxLength = 0;
@@ -432,7 +437,7 @@ namespace SKS_Blazor.Components
             // 
             cmdCustomers.AllowDrop = true;
             cmdCustomers.BackColor = System.Drawing.SystemColors.Control;
-            cmdCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            cmdCustomers.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             cmdCustomers.ForeColor = System.Drawing.SystemColors.ControlText;
             cmdCustomers.Location = new System.Drawing.Point(456, 16);
             cmdCustomers.Name = "cmdCustomers";
@@ -452,7 +457,7 @@ namespace SKS_Blazor.Components
             txtCompanyName.BackColor = System.Drawing.SystemColors.Window;
             txtCompanyName.BorderStyle = BorderStyle.Fixed3D;
             //txtCompanyName.Cursor = Cursors.IBeam;
-            txtCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtCompanyName.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtCompanyName.ForeColor = System.Drawing.SystemColors.WindowText;
             txtCompanyName.Location = new System.Drawing.Point(88, 16);
             txtCompanyName.MaxLength = 0;
@@ -467,7 +472,7 @@ namespace SKS_Blazor.Components
             lvCustomers.AllowDrop = true;
             lvCustomers.BackColor = System.Drawing.SystemColors.Window;
             lvCustomers.BorderStyle = BorderStyle.Fixed3D;
-            lvCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lvCustomers.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             lvCustomers.ForeColor = System.Drawing.SystemColors.WindowText;
             lvCustomers.FullRowSelect = true;
             lvCustomers.GridLines = true;
@@ -528,7 +533,7 @@ namespace SKS_Blazor.Components
             Label3.AllowDrop = true;
             Label3.BackColor = System.Drawing.SystemColors.Control;
             //Label3.BorderStyle = BorderStyle.None;
-            Label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label3.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label3.ForeColor = System.Drawing.SystemColors.ControlText;
             Label3.Location = new System.Drawing.Point(240, 48);
             Label3.MinimumSize = new System.Drawing.Size(97, 17);
@@ -543,7 +548,7 @@ namespace SKS_Blazor.Components
             Label4.AllowDrop = true;
             Label4.BackColor = System.Drawing.SystemColors.Control;
             //Label4.BorderStyle = BorderStyle.None;
-            Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label4.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label4.ForeColor = System.Drawing.SystemColors.ControlText;
             Label4.Location = new System.Drawing.Point(8, 16);
             Label4.MinimumSize = new System.Drawing.Size(89, 17);
@@ -558,7 +563,7 @@ namespace SKS_Blazor.Components
             Label2.AllowDrop = true;
             Label2.BackColor = System.Drawing.SystemColors.Control;
             //Label2.BorderStyle = BorderStyle.None;
-            Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label2.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label2.ForeColor = System.Drawing.SystemColors.ControlText;
             Label2.Location = new System.Drawing.Point(8, 48);
             Label2.MinimumSize = new System.Drawing.Size(89, 17);
@@ -578,7 +583,7 @@ namespace SKS_Blazor.Components
             Frame2.Controls.Add(Label1);
             //Frame2.Cursor = UpgradeHelpers.Helpers.CursorHelper.CursorDefault;
             Frame2.Enabled = true;
-            Frame2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Frame2.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Frame2.ForeColor = System.Drawing.SystemColors.ControlText;
             Frame2.Location = new System.Drawing.Point(8, 256);
             Frame2.Name = "Frame2";
@@ -595,7 +600,7 @@ namespace SKS_Blazor.Components
             txtCustomerContact.BackColor = System.Drawing.SystemColors.Menu;
             txtCustomerContact.BorderStyle = BorderStyle.Fixed3D;
             //txtCustomerContact.Cursor = Cursors.IBeam;
-            txtCustomerContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtCustomerContact.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtCustomerContact.ForeColor = System.Drawing.SystemColors.WindowText;
             txtCustomerContact.Location = new System.Drawing.Point(288, 16);
             txtCustomerContact.MaxLength = 0;
@@ -613,7 +618,7 @@ namespace SKS_Blazor.Components
             txtCustomerCompany.BackColor = System.Drawing.SystemColors.Menu;
             txtCustomerCompany.BorderStyle = BorderStyle.Fixed3D;
             //txtCustomerCompany.Cursor = Cursors.IBeam;
-            txtCustomerCompany.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtCustomerCompany.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             txtCustomerCompany.ForeColor = System.Drawing.SystemColors.WindowText;
             txtCustomerCompany.Location = new System.Drawing.Point(72, 16);
             txtCustomerCompany.MaxLength = 0;
@@ -629,7 +634,7 @@ namespace SKS_Blazor.Components
             Label5.AllowDrop = true;
             Label5.BackColor = System.Drawing.SystemColors.Control;
             //Label5.BorderStyle = BorderStyle.None;
-            Label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label5.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label5.ForeColor = System.Drawing.SystemColors.ControlText;
             Label5.Location = new System.Drawing.Point(8, 16);
             Label5.MinimumSize = new System.Drawing.Size(57, 17);
@@ -644,7 +649,7 @@ namespace SKS_Blazor.Components
             Label1.AllowDrop = true;
             Label1.BackColor = System.Drawing.SystemColors.Control;
             //Label1.BorderStyle = BorderStyle.None;
-            Label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label1.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label1.ForeColor = System.Drawing.SystemColors.ControlText;
             Label1.Location = new System.Drawing.Point(232, 16);
             Label1.MinimumSize = new System.Drawing.Size(57, 17);
@@ -658,7 +663,7 @@ namespace SKS_Blazor.Components
             // 
             dtPromised.AllowDrop = true;
             dtPromised.Checked = false;
-            dtPromised.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dtPromised.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             dtPromised.Format = DateTimePickerFormat.Short;
             dtPromised.Location = new System.Drawing.Point(352, 320);
             dtPromised.Name = "dtPromised";
@@ -671,7 +676,7 @@ namespace SKS_Blazor.Components
             Label13.AllowDrop = true;
             Label13.BackColor = System.Drawing.SystemColors.Control;
             //Label13.BorderStyle = BorderStyle.None;
-            Label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label13.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label13.ForeColor = System.Drawing.SystemColors.ControlText;
             Label13.Location = new System.Drawing.Point(8, 544);
             Label13.MinimumSize = new System.Drawing.Size(89, 17);
@@ -686,7 +691,7 @@ namespace SKS_Blazor.Components
             Label12.AllowDrop = true;
             Label12.BackColor = System.Drawing.SystemColors.Control;
             //Label12.BorderStyle = BorderStyle.None;
-            Label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label12.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label12.ForeColor = System.Drawing.SystemColors.ControlText;
             Label12.Location = new System.Drawing.Point(8, 592);
             Label12.MinimumSize = new System.Drawing.Size(89, 17);
@@ -701,7 +706,7 @@ namespace SKS_Blazor.Components
             Label11.AllowDrop = true;
             Label11.BackColor = System.Drawing.SystemColors.Control;
             //Label11.BorderStyle = BorderStyle.None;
-            Label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label11.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label11.ForeColor = System.Drawing.SystemColors.ControlText;
             Label11.Location = new System.Drawing.Point(8, 616);
             Label11.MinimumSize = new System.Drawing.Size(89, 17);
@@ -716,7 +721,7 @@ namespace SKS_Blazor.Components
             Label10.AllowDrop = true;
             Label10.BackColor = System.Drawing.SystemColors.Control;
             //Label10.BorderStyle = BorderStyle.None;
-            Label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label10.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label10.ForeColor = System.Drawing.SystemColors.ControlText;
             Label10.Location = new System.Drawing.Point(272, 592);
             Label10.MinimumSize = new System.Drawing.Size(89, 17);
@@ -731,7 +736,7 @@ namespace SKS_Blazor.Components
             Label9.AllowDrop = true;
             Label9.BackColor = System.Drawing.SystemColors.Control;
             //Label9.BorderStyle = BorderStyle.None;
-            Label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label9.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label9.ForeColor = System.Drawing.SystemColors.ControlText;
             Label9.Location = new System.Drawing.Point(272, 616);
             Label9.MinimumSize = new System.Drawing.Size(89, 17);
@@ -746,7 +751,7 @@ namespace SKS_Blazor.Components
             Label8.AllowDrop = true;
             Label8.BackColor = System.Drawing.SystemColors.Control;
             //Label8.BorderStyle = BorderStyle.None;
-            Label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label8.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label8.ForeColor = System.Drawing.SystemColors.ControlText;
             Label8.Location = new System.Drawing.Point(8, 568);
             Label8.MinimumSize = new System.Drawing.Size(89, 17);
@@ -761,7 +766,7 @@ namespace SKS_Blazor.Components
             Label7.AllowDrop = true;
             Label7.BackColor = System.Drawing.SystemColors.Control;
             //Label7.BorderStyle = BorderStyle.None;
-            Label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label7.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label7.ForeColor = System.Drawing.SystemColors.ControlText;
             Label7.Location = new System.Drawing.Point(256, 320);
             Label7.MinimumSize = new System.Drawing.Size(105, 17);
@@ -776,7 +781,7 @@ namespace SKS_Blazor.Components
             Label6.AllowDrop = true;
             Label6.BackColor = System.Drawing.SystemColors.Control;
             //Label6.BorderStyle = BorderStyle.None;
-            Label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Label6.Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             Label6.ForeColor = System.Drawing.SystemColors.ControlText;
             Label6.Location = new System.Drawing.Point(8, 320);
             Label6.MinimumSize = new System.Drawing.Size(105, 17);
@@ -817,7 +822,7 @@ namespace SKS_Blazor.Components
             Controls.Add(Label8);
             Controls.Add(Label7);
             Controls.Add(Label6);
-            Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Font = new Gap.Blazor.Font("Microsoft Sans Serif", 8.25f, Gap.Blazor.FontStyle.Regular, Gap.Blazor.GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Location = new System.Drawing.Point(3, 25);
             MaximizeBox = false;
@@ -833,11 +838,12 @@ namespace SKS_Blazor.Components
             Activated += new System.EventHandler(frmOrderRequest_Activated);
             Closed += new System.EventHandler(Form_Closed);
             FormClosing += new FormClosingEventHandler(Form_FormClosing);
-            //((System.ComponentModel.ISupportInitialize)fgProducts).EndInit();
-            //listViewHelper1.SetItemClickMethod(lvCustomers, "lvCustomers_ItemClick");
-            //listViewHelper1.SetCorrectEventsBehavior(lvCustomers, true);
-            //((System.ComponentModel.ISupportInitialize)listViewHelper1).EndInit();
-            sbStatusBar.ResumeLayout(false);
+			// gap-todo: PBI 749102. DataGridView implement ISupportInitialize interface and add equivalent support for DataGridViewFlex methods.
+			//((System.ComponentModel.ISupportInitialize)fgProducts).EndInit();
+			lvCustomers.ItemClick += new ListViewItemClickEventHandler(lvCustomers_ItemClick);
+			// gap-todo: PBI 746467. Add support for component UpgradeHelpers.Gui.Controls.ListViewHelper.
+			//listViewHelper1.SetCorrectEventsBehavior(lvCustomers, true);
+			sbStatusBar.ResumeLayout(false);
             Frame1.ResumeLayout(false);
             lvCustomers.ResumeLayout(false);
             Frame2.ResumeLayout(false);
@@ -850,8 +856,8 @@ namespace SKS_Blazor.Components
             // functionality of automatically
             // loading and showing an MDI
             // child's parent.
-            //MdiParent = frmMain.DefInstance;
-            //frmMain.DefInstance.Show();
+            MdiParent = frmMain.DefInstance;
+            frmMain.DefInstance.Show();
         }
         #endregion
     }
