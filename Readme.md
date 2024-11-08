@@ -38,31 +38,31 @@ Below you can see some of the migrated screens.
 
 Add Stock Order (frmOrderReception):
 
-![frmOrderReception](./SKSPhotos/AddStockOrder.PNG)
+![frmOrderReception](./SKSPhotos/AddStockOrder.png)
 
 Suppliers (frmProviders):
 
-![frmProviders](./SKSPhotos/Suppliers.PNG)
+![frmProviders](./SKSPhotos/Suppliers.png)
 
 Customers (frmCustomers):
 
-![frmCustomers](./SKSPhotos/Customers.PNG)
+![frmCustomers](./SKSPhotos/Customers.png)
 
 Inventory Update (frmAddStockManual):
 
-![frmAddStockManual](./SKSPhotos/InventoryUpdate.PNG)
+![frmAddStockManual](./SKSPhotos/InventoryUpdate.png)
 
 Add Stock to Inventory (frmActionOrderReception):
 
-![frmActionOrderReception](./SKSPhotos/AddStockToInventory.PNG)
+![frmActionOrderReception](./SKSPhotos/AddStockToInventory.png)
 
 Create Invoice (frmRequestAproval):
 
-![frmRequestAproval](./SKSPhotos/CreateInvoice.PNG)
+![frmRequestAproval](./SKSPhotos/CreateInvoice.png)
 
 Search (frmSearch):
 
-![frmSearch](./SKSPhotos/Search.PNG)
+![frmSearch](./SKSPhotos/Search.png)
 
 # Some Features used by this migration
 
