@@ -1,6 +1,6 @@
 # Salmon King Seafood Reference App (SKS) Webmap for Blazor C#
 
-![SKSWinForms](./SKSPhotos/SKSBlazor.PNG)
+![SKSWinForms](./SKSPhotos/SKSBlazor.png)
 
 # About the App
 
